@@ -28,6 +28,8 @@ namespace WebUI
         {
             services.AddControllersWithViews();
             services.AddDbContext<StoreDBContext>(options =>  options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
+            services.AddScoped<storeDB, storeDB>();
+            services.AddScoped<BLogic, BLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
