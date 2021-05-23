@@ -4,29 +4,27 @@
     ViewData["Title"] = "Login";
 }
 
+
+
 <div class="dropdown">
-    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+    <button class="btn btn-primary" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
         <span id="selected">Chose option</span><span class="caret"></span>
-    </a>
+    </button>
     <ul class="dropdown-menu">
-        <li><a href="#" onclick="setLable('Dirt')">Option 1</a></li>
-        <li><a href="#" onclick="setLable('Dirt')">Option 2</a></li>
-        <li><a href="#" onclick="setLable('Dirt')">Option 3</a></li>
-        <li><a href="#" onclick="setLable('Dirt')">Option 4</a></li>
+        <li><a href='@Url.Action("Dirt", "Orders")' onclick="setLable('Dirt', 1)">Option 1</a></li>
+        <li><a href='@Url.Action("Rocks", "Orders")' onclick="setLable('Rocks', 2)">Option 2</a></li>
+        <li><a href='@Url.Action("DirtWRocks", "Orders")' onclick="setLable('Dirt with some rocks in it', 3)">Option 3</a></li>
+        <li><a href='@Url.Action("RocksWDirt", "Orders")' onclick="setLable('Rocks with some dirt in it', 4)">Option 4</a></li>
     </ul>
 </div>
 
 <script>
-    @*$('.dropdown-menu a').click(function () {
-        $('#selected').text($(this).text());
-    });*@
-
-    function setLable(label) {
+    let productId = 0
+    function setLable(label, p) {
         document.getElementById("selected").innerHTML = label
+        productId = p
     }
 
-
-    console.log("script works")
 </script>
 
 @section Scripts {

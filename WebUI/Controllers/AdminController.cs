@@ -4,36 +4,53 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using BuisnessLogic;
 
 namespace WebUI.Controllers
 {
-    public class OrdersController : Controller
+    public class AdminController : Controller
     {
-        private BLogic _BL;
-        public OrdersController(BLogic BL)
-        {
-            _BL = BL;
-        }
-        // GET: Orders
+        // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Dirt()
+
+        public ActionResult FindCustomer()
         {
-            ViewBag.itemCount = _BL.CheckItemAmount(1);
             return View();
         }
 
-        // GET: Orders/Create
+        public ActionResult FindOrder()
+        {
+            return View();
+        }
+
+        public ActionResult ManageStore()
+        {
+            return View();
+        }
+
+        public ActionResult ViewAllLocations()
+        {
+            return View();
+        }
+
+
+
+        // GET: Admin/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Admin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Admin/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -50,13 +67,13 @@ namespace WebUI.Controllers
             }
         }
 
-        // GET: Orders/Edit/5
+        // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Orders/Edit/5
+        // POST: Admin/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -73,13 +90,13 @@ namespace WebUI.Controllers
             }
         }
 
-        // GET: Orders/Delete/5
+        // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Orders/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

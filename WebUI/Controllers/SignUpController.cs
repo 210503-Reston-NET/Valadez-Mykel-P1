@@ -30,7 +30,7 @@ namespace WebUI.Controllers
             try
             {
                 int userId = _BL.AddNewUser(newUser.Name, newUser.Email, newUser.Password);
-                return View("../Home/Idnex");
+                return View("../Home/Index");
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);

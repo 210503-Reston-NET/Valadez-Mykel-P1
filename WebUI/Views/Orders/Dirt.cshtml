@@ -1,0 +1,12 @@
+@model WebUI.Models.OrderVM;
+@{
+    ViewData["Title"] = "Dirt";
+}
+
+<h1>Dirt</h1>
+
+<h4>Amoutn Available: @ViewBag.itemCount</h4>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

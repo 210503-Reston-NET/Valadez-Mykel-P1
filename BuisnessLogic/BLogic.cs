@@ -77,7 +77,7 @@ namespace BuisnessLogic
             _DB.GetAllLocations().ForEach(i => Console.WriteLine(i.Name+" Location \nAddress:\n"+i.Address+"\n"));
         }
 
-        public int CheckItemAmount1(int productId)
+        public int CheckItemAmount(int productId)
         {
             return _DB.CheckItemAmount(productId);
         }
