@@ -15,8 +15,8 @@ namespace BuisnessLogic
             _DB = DB;
         }
 
-        public void CheckUserCredentials(string email, string password){
-            _CustID = _DB.GetUserID(email, password);
+        public int CheckUserCredentials(string email, string password){
+            return _DB.GetUserID(email, password);
         }
 
         public void FindUser(string name){
@@ -36,9 +36,10 @@ namespace BuisnessLogic
             _DB.ViewOrder(orderId);
         }
 
-        public void AddNewUser(string name, string email, string password){
+        public int AddNewUser(string name, string email, string password){
             _CustID = _DB.AddUser(name, email, password);
             if(!(_CustID > 0)) throw new Exception("Unable to verify user creation");
+            return _CustID;
         }
 
         public void FindLocationByName(string name){

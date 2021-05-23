@@ -15,7 +15,7 @@ namespace DataLogic
         }
 
         public int GetUserID(string email, string password){
-            return _context.Customers.First(cust => cust.Email.Equals(email) && cust.Password.Equals(password)).CustomerId;
+            return _context.Customers.FirstOrDefault(cust => cust.Email.Equals(email) && cust.Password.Equals(password)).CustomerId;
         }
 
         public int AddUser(string name, string email, string password){
