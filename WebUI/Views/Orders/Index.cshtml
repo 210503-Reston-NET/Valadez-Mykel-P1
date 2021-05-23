@@ -1,0 +1,34 @@
+﻿
+@model WebUI.Models.CustomerVM;
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="dropdown">
+    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <span id="selected">Chose option</span><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="#" onclick="setLable('Dirt')">Option 1</a></li>
+        <li><a href="#" onclick="setLable('Dirt')">Option 2</a></li>
+        <li><a href="#" onclick="setLable('Dirt')">Option 3</a></li>
+        <li><a href="#" onclick="setLable('Dirt')">Option 4</a></li>
+    </ul>
+</div>
+
+<script>
+    @*$('.dropdown-menu a').click(function () {
+        $('#selected').text($(this).text());
+    });*@
+
+    function setLable(label) {
+        document.getElementById("selected").innerHTML = label
+    }
+
+
+    console.log("script works")
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

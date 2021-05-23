@@ -2,7 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Welcome to JoeyBob's Dirt Super Supply</h1>
+
+<h4>What chew wan?</h4>
+
+<div class="container">
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("Index", "Orders")'">
+            Buy Online Now
+        </btn>
+    </div>
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary">
+            Find a Store
+        </btn>
+    </div>
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary">
+            Check Orders
+        </btn>
+    </div>
 </div>

@@ -25,5 +25,6 @@
   <ItemGroup>
     <Folder Include="Views\Login\" />
     <Folder Include="Views\SignUp\" />
+    <Folder Include="Views\Orders\" />
   </ItemGroup>
 </Project>
