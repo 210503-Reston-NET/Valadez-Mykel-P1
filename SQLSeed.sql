@@ -54,9 +54,11 @@ CREATE TABLE OrderDetails
 
 INSERT into locations VALUES ('Scranton', '5354 West Pickle St. Scranton, OH 99849')
 
-INSERT into Products VALUES ('Dirt', 5.99), ('Rocks', 4.99), ('Dirts with Rocks in It', 7.99), ('Rocks with Some Dirt in It', 7.99)
+INSERT into "public"."Products" ("Name", "Price") VALUES ('Dirt', 5.99), ('Rocks', 4.99), ('Dirts with Rocks in It', 7.99), ('Rocks with Some Dirt in It', 7.99)
 
-INSERT into Customers VALUES ('Mykel', 'valadezmykel@gmail.com', 'password'), ('JoeyBob', 'dirtEmpire@gmail.com', 'fishTaco')
+INSERT into Customers VALUES ('JoeyBob', 'dirtEmpire@gmail.com', 'fishTaco')
+
+select * from "public"."Customers"
 
 INSERT into Orders VALUES (1, 1)
 

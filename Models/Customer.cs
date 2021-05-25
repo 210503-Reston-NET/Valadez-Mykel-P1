@@ -18,5 +18,10 @@ namespace Models
         public Customer(int id, string name, string email, string password): this(name, email, password){
             this.CustomerId = id;
         }
+
+        public Customer(int id)
+        {
+            this.CustomerId = id;
+        }
     }
 }

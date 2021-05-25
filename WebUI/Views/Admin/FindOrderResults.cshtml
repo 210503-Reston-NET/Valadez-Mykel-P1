@@ -1,0 +1,58 @@
+@model WebUI.Models.OrderVM;
+@{
+    ViewData["Title"] = "FindOrderResults";
+}
+
+<h1>FindOrderResults</h1>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delivered)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.Delivered)
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Models;
 using DataLogic;
+using System.Linq;
 
 namespace BuisnessLogic
 {
@@ -25,15 +26,12 @@ namespace BuisnessLogic
             Console.WriteLine("Name: "+cust.Name);
             Console.WriteLine("Email: "+cust.Email);
         }
-        public void FindUser(int customerId){
-            Customer cust = _DB.FindCustomer(customerId);
-            Console.WriteLine("Id: "+ cust.CustomerId);
-            Console.WriteLine("Name: "+cust.Name);
-            Console.WriteLine("Email: "+cust.Email);
+        public Customer FindUser(int customerId){
+            return _DB.FindCustomer(customerId);
         }
 
-        public void CheckOrder(int orderId){
-            _DB.ViewOrder(orderId);
+        public Tuple<Order, OrderDetail> CheckOrder(int orderId){
+            return _DB.ViewOrder(orderId);
         }
 
         public int AddNewUser(string name, string email, string password){
@@ -42,24 +40,29 @@ namespace BuisnessLogic
             return _CustID;
         }
 
-        public void FindLocationByName(string name){
-            _StoreID = _DB.FIndLocation(name).LocationId;
+        public Location FindLocation(string name){
+            return _DB.FIndLocation(name);
         }
 
-        public void ViewInventory()
+        public Location FindLocation(int id)
         {
-            _DB.ViewInventory(_StoreID);
+            return _DB.FIndLocation(id);
+        }
+
+        public List<LocationProductInventory> ViewInventory(int id)
+        {
+            return _DB.ViewInventory(id);
         }
 
         public void AddInventory(int productId, int quantity)
         {
             _DB.AddInventory(productId, quantity, _StoreID);
             Console.Clear();
-            ViewInventory();
+            ViewInventory(_StoreID);
         }
 
-        public void AddLocation(string name, string address){
-            _DB.AddLocation(name, address);
+        public void AddLocation(Location loc){
+            _DB.AddLocation(loc.Name, loc.Address);
         }
 
         public void ViewTransactionsByCustomer()
@@ -71,10 +74,9 @@ namespace BuisnessLogic
             _DB.TransactionByLocation(_StoreID);
         }
 
-        public void GetAllStores()
+        public List<Location> GetAllStores()
         {
-            Console.Clear();
-            _DB.GetAllLocations().ForEach(i => Console.WriteLine(i.Name+" Location \nAddress:\n"+i.Address+"\n"));
+            return _DB.GetAllLocations();
         }
 
         public int CheckItemAmount(int productId)

@@ -1,4 +1,6 @@
 ﻿using System;
+using Models;
+
 namespace WebUI.Models
 {
     public class CustomerVM
@@ -22,6 +24,16 @@ namespace WebUI.Models
         {
             this.CustomerId = id;
         }
+
+        public CustomerVM(Customer Cust)
+        {
+            this.CustomerId = Cust.CustomerId;
+            this.Name = Cust.Name;
+            this.Email = Cust.Email;
+            this.Password = Cust.Password;
+
+        }
+
 
     }
 }

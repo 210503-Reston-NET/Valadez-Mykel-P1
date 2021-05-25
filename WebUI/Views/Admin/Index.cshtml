@@ -1,10 +1,38 @@
 
-@model WebUI.Views.Admin.AdminModel
-@{
-    ViewData["Title"] = "Admin";
-}
 
-<h1>Admin</h1>
+@{ ViewData["Title"] = "Admin"; }
+
+<h1>Welcome to JoeyBob's Dirt Super Supply</h1>
+
+<h4>What chew wan?</h4>
+
+<div class="container">
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("FindCustomer", "Admin")'">
+            Find a Customer
+        </btn>
+    </div>
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("FindOrder", "Admin")'">
+            Track an Order
+        </btn>
+    </div>
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("ManageStore", "Admin")'">
+            Manage a Store Location
+        </btn>
+    </div>
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("ViewAllLocations", "Admin")'">
+            View all Locations
+        </btn>
+    </div>
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("AddLocation", "Admin")'">
+            Add a Location
+        </btn>
+    </div>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
