@@ -72,11 +72,14 @@ namespace WebUI.Controllers
 
         public ActionResult ManageLocation(int locationId)
         {
+            Console.WriteLine("did try the code first right?");
             try
             {
-                Location loc = _BL.FindLocationById(locationId);
-                List<LocationProductInventory> items = _BL.ViewInventory(locationId);
-            
+                Location loc = getLoc(locationId);
+                List<LocationProductInventory> items = getItems(locationId);
+                Console.WriteLine("it is working so far!!!!!");
+                items.ForEach(i => Console.WriteLine(i.Quantity));
+                //Console.WriteLine(items[0);
                 return View(new FullLocation(loc, items));
 
             }
@@ -85,6 +88,16 @@ namespace WebUI.Controllers
                 Console.WriteLine(e.Message);
             }
             return View("ViewAllLocations");
+        }
+
+        public Location getLoc(int id)
+        {
+            return _BL.FindLocationById(id);
+        }
+
+        public List<LocationProductInventory> getItems(int locationId)
+        {
+            return _BL.ViewInventory(locationId);
         }
 
         public ActionResult ViewAllLocations()
@@ -115,7 +128,6 @@ namespace WebUI.Controllers
 
         public ActionResult AddInventory(int locationId)
         {
-            Console.WriteLine("locationID!!!" + locationId);
             AddInventoryVM id = new AddInventoryVM(locationId);
             return View(id);
         }
@@ -134,10 +146,17 @@ namespace WebUI.Controllers
 
             }
 
-            return View("./ManageLocation", new FullLocation(toAddInv.LocationId));
+            return View("./ManageLocation", new FullLocation(getLoc(toAddInv.LocationId),(getItems(toAddInv.LocationId))));
+            //return View();
         }
 
-
+        public ActionResult LocationOrders(int id)
+        {
+            List<Order> orders = _BL.ViewTransactionsByLocation(id);
+            List<OrderVM> orderVMs = new List<OrderVM>();
+            orders.ForEach(ord => orderVMs.Add(new OrderVM(_BL.CheckOrder(ord.OrderId))));
+            return View(orderVMs);
+        }
 
         
     }

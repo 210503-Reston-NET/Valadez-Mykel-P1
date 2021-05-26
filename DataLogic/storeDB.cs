@@ -63,10 +63,10 @@ namespace DataLogic
             //});
         }
 
-        public void TransactionByLocation(int locationId){
-            _context.Orders.Where(loc => loc.LocationId.Equals(locationId))
-            .ToList()
-            .ForEach(loc => ViewOrder(loc.OrderId));
+        public List<Order> TransactionByLocation(int locationId){
+            return _context.Orders.Where(loc => loc.LocationId.Equals(locationId))
+            .ToList();
+            
         }
 
         public Tuple<Order, OrderDetail> ViewOrder(int orderId){

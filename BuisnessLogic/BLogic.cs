@@ -68,8 +68,8 @@ namespace BuisnessLogic
             _DB.GetCustomerOrderAndDetails(_CustID);
         }
 
-        public void ViewTransactionsByLocation(){
-            _DB.TransactionByLocation(_StoreID);
+        public List<Order> ViewTransactionsByLocation(int id){
+            return _DB.TransactionByLocation(id);
         }
 
         public List<Location> GetAllStores()

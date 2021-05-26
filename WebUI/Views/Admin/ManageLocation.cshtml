@@ -59,6 +59,9 @@
 <div class="col-md col-lg-6">
     @Html.ActionLink("Add Inventory", "AddInventory", new { LocationId = Model.LocationId })
 </div>
+<div class="col-md col-lg-6">
+    @Html.ActionLink("View Store Orders", "LocationOrders", new { LocationId = Model.LocationId })
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
