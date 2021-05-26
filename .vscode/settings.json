@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/350a34a6-2c81-44a7-a7ab-9132754af350/resourceGroups/toDelete/providers/Microsoft.Web/sites/DirtEmpire",
+    "appService.deploySubpath": "."
+}

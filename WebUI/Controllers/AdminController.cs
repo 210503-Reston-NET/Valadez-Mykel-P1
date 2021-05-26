@@ -72,14 +72,11 @@ namespace WebUI.Controllers
 
         public ActionResult ManageLocation(int locationId)
         {
-            Console.WriteLine("did try the code first right?");
             try
             {
                 Location loc = getLoc(locationId);
                 List<LocationProductInventory> items = getItems(locationId);
-                Console.WriteLine("it is working so far!!!!!");
-                items.ForEach(i => Console.WriteLine(i.Quantity));
-                //Console.WriteLine(items[0);
+                
                 return View(new FullLocation(loc, items));
 
             }
@@ -128,6 +125,7 @@ namespace WebUI.Controllers
 
         public ActionResult AddInventory(int locationId)
         {
+            Console.WriteLine(locationId);
             AddInventoryVM id = new AddInventoryVM(locationId);
             return View(id);
         }
@@ -150,10 +148,13 @@ namespace WebUI.Controllers
             //return View();
         }
 
-        public ActionResult LocationOrders(int id)
+        public ActionResult LocationOrders(FullLocation id)
         {
-            List<Order> orders = _BL.ViewTransactionsByLocation(id);
+
+            List<Order> orders = _BL.ViewTransactionsByLocation(id.LocationId);
+
             List<OrderVM> orderVMs = new List<OrderVM>();
+
             orders.ForEach(ord => orderVMs.Add(new OrderVM(_BL.CheckOrder(ord.OrderId))));
             return View(orderVMs);
         }

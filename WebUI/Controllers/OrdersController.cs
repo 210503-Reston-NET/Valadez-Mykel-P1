@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BuisnessLogic;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
@@ -16,84 +17,25 @@ namespace WebUI.Controllers
             _BL = BL;
         }
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult Index(CustomerVM id)
         {
-            return View();
+
+            return View(new OrderVM(id));
         }
 
-        public ActionResult Dirt()
+        public ActionResult Dirt(OrderVM ord)
         {
+            
             ViewBag.itemCount = _BL.CheckItemAmount(1);
-            return View();
+            return View(ord);
         }
 
-        // GET: Orders/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Orders/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult MakeOrder(OrderVM ord)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _BL.MakePurchase(ord.ProductId, ord.Quantity, ord.CustomerId);
+            return View("../Home/Index", new CustomerVM(ord.CustomerId));
         }
-
-        // GET: Orders/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Orders/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Orders/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Orders/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

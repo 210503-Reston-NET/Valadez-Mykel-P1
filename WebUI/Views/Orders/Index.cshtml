@@ -1,7 +1,7 @@
 ﻿
-@model WebUI.Models.CustomerVM;
+@model WebUI.Models.OrderVM;
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Order Online";
 }
 
 
@@ -11,21 +11,21 @@
         <span id="selected">Chose option</span><span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li><a href='@Url.Action("Dirt", "Orders")' onclick="setLable('Dirt', 1)">Option 1</a></li>
-        <li><a href='@Url.Action("Rocks", "Orders")' onclick="setLable('Rocks', 2)">Option 2</a></li>
-        <li><a href='@Url.Action("DirtWRocks", "Orders")' onclick="setLable('Dirt with some rocks in it', 3)">Option 3</a></li>
-        <li><a href='@Url.Action("RocksWDirt", "Orders")' onclick="setLable('Rocks with some dirt in it', 4)">Option 4</a></li>
+        <li><a href='@Url.Action("Dirt", "Orders", new { CustomerId = Model.CustomerId, ProductId = 1})' onclick="setLable('Dirt', 1)">Dirt</a></li>
+        <li><a href='@Url.Action("Rocks", "Orders")' onclick="setLable('Rocks', 2)">Rocks</a></li>
+        <li><a href='@Url.Action("DirtWRocks", "Orders")' onclick="setLable('Dirt with some rocks in it', 3)">Dirt with some rocks in it</a></li>
+        <li><a href='@Url.Action("RocksWDirt", "Orders")' onclick="setLable('Rocks with some dirt in it', 4)">Rocks with some dirt in it</a></li>
     </ul>
 </div>
-
 <script>
     let productId = 0
     function setLable(label, p) {
         document.getElementById("selected").innerHTML = label
         productId = p
     }
-
 </script>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

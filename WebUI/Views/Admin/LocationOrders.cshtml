@@ -1,9 +1,53 @@
-@page
+@model List<WebUI.Models.OrderVM>;
 @{
     ViewData["Title"] = "LocationOrders";
 }
 
-<h1>LocationOrders</h1>
+<h1>Orders From Location</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Delivered)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivered)
+            </td>
+        </tr>
+          }
+    </tbody>
+</table>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

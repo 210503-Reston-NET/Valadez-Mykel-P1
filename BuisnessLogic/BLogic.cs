@@ -10,7 +10,6 @@ namespace BuisnessLogic
     {
         private storeDB _DB;
         private int _CustID;
-        private int _StoreID;
         public BLogic(storeDB DB)
         {
             _DB = DB;
@@ -87,10 +86,10 @@ namespace BuisnessLogic
             return _DB.GetProductInfo(productId).Price;
         }
 
-        public void MakePurchase(int productId, int orderAmount)
+        public void MakePurchase(int productId, int orderAmount, int custId)
         {
             try{
-                _DB.SellItems(productId, orderAmount, _CustID);
+                _DB.SellItems(productId, orderAmount, custId);
 
             }catch(Exception e){
                 Console.WriteLine("message: ");

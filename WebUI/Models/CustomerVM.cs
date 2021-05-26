@@ -25,6 +25,11 @@ namespace WebUI.Models
             this.CustomerId = id;
         }
 
+        public CustomerVM(int id)
+        {
+            this.CustomerId = id;
+        }
+
         public CustomerVM(Customer Cust)
         {
             this.CustomerId = Cust.CustomerId;

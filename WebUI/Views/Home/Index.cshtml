@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@model WebUI.Models.CustomerVM;
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,7 +10,7 @@
 
 <div class="container">
     <div class="row mt-4">
-        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("Index", "Orders")'">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("Index", "Orders", Model.CustomerId)'">
             Buy Online Now
         </btn>
     </div>

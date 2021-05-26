@@ -26,5 +26,15 @@ namespace WebUI.Models
         {
             this.OrderId = orderid;
         }
+
+        public OrderVM(CustomerVM custid)
+        {
+            this.CustomerId = custid.CustomerId;
+        }
+
+        public OrderVM()
+        {
+
+        }
     }
 }

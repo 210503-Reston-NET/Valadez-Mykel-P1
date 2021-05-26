@@ -40,9 +40,9 @@ namespace WebUI.Controllers
                 {
                     int userId = _BL.CheckUserCredentials(userInfo.Email, userInfo.Password);
                     //if (userId == null) Console.WriteLine("User doesn't exist");
+                    return View("../Home/Index", new CustomerVM(userId));
                 }
 
-                return View("../Home/Index");
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);

@@ -18,9 +18,9 @@ namespace WebUI.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            return View(new CustomerVM(id));
         }
 
         public IActionResult Privacy()
