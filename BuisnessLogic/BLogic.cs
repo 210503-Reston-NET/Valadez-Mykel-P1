@@ -44,9 +44,9 @@ namespace BuisnessLogic
             return _DB.FIndLocation(name);
         }
 
-        public Location FindLocation(int id)
+        public Location FindLocationById(int id)
         {
-            return _DB.FIndLocation(id);
+            return _DB.FindLocation(id);
         }
 
         public List<LocationProductInventory> ViewInventory(int id)
@@ -54,11 +54,9 @@ namespace BuisnessLogic
             return _DB.ViewInventory(id);
         }
 
-        public void AddInventory(int productId, int quantity)
+        public void AddInventory(int productId, int quantity, int locationId)
         {
-            _DB.AddInventory(productId, quantity, _StoreID);
-            Console.Clear();
-            ViewInventory(_StoreID);
+            _DB.AddInventory(productId, quantity, locationId);
         }
 
         public void AddLocation(Location loc){

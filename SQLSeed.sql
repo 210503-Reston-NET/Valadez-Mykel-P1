@@ -52,16 +52,16 @@ CREATE TABLE OrderDetails
     OrderId int NOT NULL FOREIGN KEY REFERENCES Orders(OrderId) ON DELETE CASCADE
 )
 
-INSERT into locations VALUES ('Scranton', '5354 West Pickle St. Scranton, OH 99849')
+INSERT into "public"."Locations" ("Name", "Address") VALUES ('Scranton', '5354 West Pickle St. Scranton, OH 99849')
 
 INSERT into "public"."Products" ("Name", "Price") VALUES ('Dirt', 5.99), ('Rocks', 4.99), ('Dirts with Rocks in It', 7.99), ('Rocks with Some Dirt in It', 7.99)
 
 INSERT into Customers VALUES ('JoeyBob', 'dirtEmpire@gmail.com', 'fishTaco')
 
-select * from "public"."Customers"
+select * from "public"."OrderDetails"
 
-INSERT into Orders VALUES (1, 1)
+INSERT into "public"."Orders" ("LocationId", "CustomerId") VALUES (1, 1)
 
-INSERT into OrderDetails VALUES (10, 0, 1, 1)
+INSERT into "public"."OrderDetails" ("Quantity", "Delivered", "ProductId", "OrderId") VALUES (10, false, 1, 1)
 
-INSERT into LocationProductInventories VALUES (44, 1, 1)
+INSERT into "public"."LocationProductInventories" ("Quantity", "ProductId", "LocationId") VALUES (44, 1, 1)

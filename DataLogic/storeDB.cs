@@ -26,37 +26,41 @@ namespace DataLogic
             _context.SaveChanges();
             return GetUserID(email, password);
         }
-        public void ViewInventory(int locationId)
+        public List<LocationProductInventory> ViewInventory(int locationId)
         {
-            int counter = 1;
+            return _context.LocationProductInventories.Where(inv => inv.LocationId.Equals(locationId))
+               .ToList();
 
-            _context.Locations.Join(_context.LocationProductInventories,
-                loc => loc.LocationId,
-                lpi => lpi.LocationId,
-                (loc, lpi) =>
-                new {
-                    Name = loc.Name,
-                    LocationId = loc.LocationId,
-                    Address = loc.Address,
-                    // Used to be able to pull the name out here with lpi.Product.Name
-                    ProductId = lpi.ProductId,
-                    Quantity = lpi.Quantity
-                }
-            ).Where(inv => inv.LocationId.Equals(locationId))
-            .ToList()
-            .ForEach(inv => {
-                if(counter == 1){
-                    Console.WriteLine("Location Name: "+inv.Name);
-                    Console.WriteLine("Location Id: "+inv.LocationId);
-                    Console.WriteLine("Address: "+inv.Address);
-                    Console.WriteLine("");
-                }
-                Console.WriteLine("Product : "+inv.ProductId);
-                Console.WriteLine("Quantity: "+inv.Quantity);
-                Console.WriteLine();
 
-                counter = 2;
-            });
+            //int counter = 1;
+
+            //_context.Locations.Join(_context.LocationProductInventories,
+            //    loc => loc.LocationId,
+            //    lpi => lpi.LocationId,
+            //    (loc, lpi) =>
+            //    new {
+            //        Name = loc.Name,
+            //        LocationId = loc.LocationId,
+            //        Address = loc.Address,
+            //        // Used to be able to pull the name out here with lpi.Product.Name
+            //        ProductId = lpi.ProductId,
+            //        Quantity = lpi.Quantity
+            //    }
+            //).Where(inv => inv.LocationId.Equals(locationId))
+            //.ToList()
+            //.ForEach(inv => {
+            //    if(counter == 1){
+            //        Console.WriteLine("Location Name: "+inv.Name);
+            //        Console.WriteLine("Location Id: "+inv.LocationId);
+            //        Console.WriteLine("Address: "+inv.Address);
+            //        Console.WriteLine("");
+            //    }
+            //    Console.WriteLine("Product : "+inv.ProductId);
+            //    Console.WriteLine("Quantity: "+inv.Quantity);
+            //    Console.WriteLine();
+
+            //    counter = 2;
+            //});
         }
 
         public void TransactionByLocation(int locationId){
@@ -103,9 +107,9 @@ namespace DataLogic
             return _context.Locations.First(loc => loc.Name.Equals(name));
         }
 
-        public Location FIndLocation(int id)
+        public Location FindLocation(int id)
         {
-            return _context.Locations.First(loc => loc.LocationId.Equals(id));
+            return _context.Locations.FirstOrDefault(loc => loc.LocationId.Equals(id));
         }
 
         public void AddInventory(int productId, int quantity, int locationId){

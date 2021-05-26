@@ -72,7 +72,19 @@ namespace WebUI.Controllers
 
         public ActionResult ManageLocation(int locationId)
         {
-            return View(locationId);
+            try
+            {
+                Location loc = _BL.FindLocationById(locationId);
+                List<LocationProductInventory> items = _BL.ViewInventory(locationId);
+            
+                return View(new FullLocation(loc, items));
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return View("ViewAllLocations");
         }
 
         public ActionResult ViewAllLocations()
@@ -101,81 +113,32 @@ namespace WebUI.Controllers
             return View("ViewAllLocations");
         }
 
-
-
-        // GET: Admin/Details/5
-        public ActionResult Details(int id)
+        public ActionResult AddInventory(int locationId)
         {
-            return View();
+            Console.WriteLine("locationID!!!" + locationId);
+            AddInventoryVM id = new AddInventoryVM(locationId);
+            return View(id);
         }
 
-        // GET: Admin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult AddInventory(AddInventoryVM toAddInv)
         {
+            Console.WriteLine(toAddInv);
             try
             {
-                // TODO: Add insert logic here
+                _BL.AddInventory(toAddInv.ProductId, toAddInv.Quantity, toAddInv.LocationId);
 
-                return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+
             }
+
+            return View("./ManageLocation", new FullLocation(toAddInv.LocationId));
         }
 
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: Admin/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
