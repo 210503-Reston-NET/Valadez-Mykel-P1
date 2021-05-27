@@ -8,11 +8,25 @@ trigger:
 
 pool: Default
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  solution: '**/Valadez-Mykel-P1/*.sln'
+  buildPlatform: 'ANy CPU'
+  buildConfiguration: 'Release'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore project deps
+  inputs:
+    command: 'restore'
+    projects: $(solution)
+    feedsToUse: 'select'
+- task: DotNetCoreCLI@2
+  displayName: Build the solution
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+- task: DotNetCoreCLI@2
+  displayName: Run Tests
+  inputs:
+    command: 'test'
+    projects: '**/StoreTest'
