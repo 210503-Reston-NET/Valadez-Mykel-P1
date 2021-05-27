@@ -10,7 +10,7 @@ pool: Default
 
 variables:
   solution: '**/Valadez-Mykel-P1/*.sln'
-  buildPlatform: 'ANy CPU'
+  buildPlatform: 'ANY CPU'
   buildConfiguration: 'Release'
 
 steps:
