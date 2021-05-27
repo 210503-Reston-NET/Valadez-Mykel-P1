@@ -30,3 +30,18 @@ steps:
   inputs:
     command: 'test'
     projects: '**/StoreTest'
+- task: DotNetCoreCLI@2
+  displayName: Publishing
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    zipAfterPublish: true
+    projects: 'WebUI/*csproj'
+- task: AzureRmWebAppDeployment@4
+  displayName: Deploying
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(350a34a6-2c81-44a7-a7ab-9132754af350)'
+    appType: 'webApp'
+    WebAppName: 'DirtEmpire'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
