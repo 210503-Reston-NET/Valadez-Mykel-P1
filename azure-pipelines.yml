@@ -39,6 +39,8 @@ steps:
   inputs:
     command: 'test'
     projects: '**/StoreTest'
+    # arguments: --configuration $(buildConfiguration) -- collect "Code Coverage"
+
 - task: SonarCloudAnalyze@1
   displayName: Run Code Analysis
 - task: SonarCloudPublish@1
