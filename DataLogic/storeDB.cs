@@ -157,38 +157,46 @@ namespace DataLogic
             return _context.Products.FirstOrDefault(prod => prod.ProductId.Equals(productId));
         }
 
-        public void GetCustomerOrderAndDetails(int customerId){
+        public List<Tuple<Order, OrderDetail>> GetCustomerOrderAndDetails(int customerId){
 
-            _context.Orders.Where(ord => ord.CustomerId.Equals(customerId))
-            .ToList()
-            .ForEach(ord => {
-
-                _context.Orders.Join(_context.OrderDetails,
-                ord => ord.OrderId,
-                dets => dets.OrderId,
-                (ord, dets) => 
-                new {
-                    OrderId = ord.OrderId,
-                    CustomerId = ord.CustomerId,
-                    LocationId = ord.LocationId,
-                    ProductId = dets.ProductId,
-                    Quantity = dets.Quantity,
-                    Delivered = dets.Delivered
-                    }
-                ).ToList()
-                .ForEach(row => {
-                    Console.WriteLine("Order Id: "+row.OrderId);
-                    Console.WriteLine("Customer Id: "+row.CustomerId);
-
-                    Console.WriteLine("Location Id: "+row.LocationId);
-                    Console.WriteLine("ProductId: "+row.ProductId);
-                    Console.WriteLine("Quantity Ordered: "+row.Quantity);
-                    Console.WriteLine("Delivered Yet?: "+row.Delivered);
-                    Console.WriteLine("");
-                });
-
-
+            List<Order> ords = _context.Orders.Where(ord => ord.CustomerId.Equals(customerId)).ToList();
+            // List<OrderDetail> dets = new List<OrderDetail>();
+            List<Tuple<Order, OrderDetail>> tups = new List<Tuple<Order, OrderDetail>>();
+            
+            ords.ForEach(ord => {
+                tups.Add(Tuple.Create(ord, _context.OrderDetails.FirstOrDefault(det => det.OrderId.Equals(ord.OrderId))));
             });
+
+            return tups;
+
+            // _context.Orders.Where(ord => ord.CustomerId.Equals(customerId))
+            // .ToList()
+            // .ForEach(ord => {
+
+            //     _context.Orders.Join(_context.OrderDetails,
+            //     ord => ord.OrderId,
+            //     dets => dets.OrderId,
+            //     (ord, dets) => 
+            //     new {
+            //         OrderId = ord.OrderId,
+            //         CustomerId = ord.CustomerId,
+            //         LocationId = ord.LocationId,
+            //         ProductId = dets.ProductId,
+            //         Quantity = dets.Quantity,
+            //         Delivered = dets.Delivered
+            //         }
+            //     ).ToList()
+            //     .ForEach(row => {
+            //         Console.WriteLine("Order Id: "+row.OrderId);
+            //         Console.WriteLine("Customer Id: "+row.CustomerId);
+
+            //         Console.WriteLine("Location Id: "+row.LocationId);
+            //         Console.WriteLine("ProductId: "+row.ProductId);
+            //         Console.WriteLine("Quantity Ordered: "+row.Quantity);
+            //         Console.WriteLine("Delivered Yet?: "+row.Delivered);
+            //         Console.WriteLine("");
+            //     });
+
         }
 
         public void SellItems(int productId, int requestedQuantity, int customerId){

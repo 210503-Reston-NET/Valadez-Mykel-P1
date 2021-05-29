@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BuisnessLogic;
 using WebUI.Models;
-
+using Models;
 namespace WebUI.Controllers
 {
     public class OrdersController : Controller
@@ -19,8 +19,8 @@ namespace WebUI.Controllers
         // GET: Orders
         public ActionResult Index(CustomerVM id)
         {
-
-            return View(new OrderVM(id));
+            Console.WriteLine("Custommer buying : "+id.CustomerId);
+            return View(new OrderVM(id.CustomerId));
         }
 
         public ActionResult Dirt(OrderVM ord)
@@ -36,6 +36,16 @@ namespace WebUI.Controllers
             _BL.MakePurchase(ord.ProductId, ord.Quantity, ord.CustomerId);
             return View("../Home/Index", new CustomerVM(ord.CustomerId));
         }
-        
+
+        public ActionResult GetOrders(CustomerVM id)
+        {
+            Console.WriteLine(id.CustomerId);
+            List<Tuple<Order, OrderDetail>> results = _BL.ViewTransactionsByCustomer(id.CustomerId);
+            List<OrderVM> orders = new List<OrderVM>();
+            results.ForEach(tup => {
+                orders.Add(new OrderVM(tup));
+            });
+            return View(orders);
+        }
     }
 }

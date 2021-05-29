@@ -62,9 +62,9 @@ namespace BuisnessLogic
             _DB.AddLocation(loc.Name, loc.Address);
         }
 
-        public void ViewTransactionsByCustomer()
+        public List<Tuple<Order, OrderDetail>> ViewTransactionsByCustomer(int id)
         {
-            _DB.GetCustomerOrderAndDetails(_CustID);
+            return _DB.GetCustomerOrderAndDetails(id);
         }
 
         public List<Order> ViewTransactionsByLocation(int id){
