@@ -10,19 +10,18 @@
 
 <div class="container">
     <div class="row mt-4">
-        <btn class="col-4 btn-primary" >
+        <button class="col-4 btn-primary" >
             @Html.ActionLink("Buy Online Now", "Index", "Orders", new { CustomerId = Model.CustomerId })
-            Buy Online Now
-        </btn>
+        </button>
     </div>
     <div class="row mt-4">
-        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("UserOrders", "Home")'">
-            @Html.ActionLink("Find a Location", "Index", "Orders", new { CustomerId = Model.CustomerId })
-        </btn>
+        <button class="col-4 btn-primary">
+            @Html.ActionLink("Find a Location", "GetLocations", "Home")
+        </button>
     </div>
     <div class="row mt-4">
-        <btn class="col-4 btn-primary">
-            @Html.ActionLink("Buy Online Now", "GetOrders", "Orders", new { CustomerId = Model.CustomerId })
-        </btn>
+        <button class="col-4 btn-primary">
+            @Html.ActionLink("Check on Your Orders", "GetOrders", "Orders", new { CustomerId = Model.CustomerId })
+        </button>
     </div>
 </div>

@@ -1,5 +1,5 @@
 @model List<WebUI.Models.LocationVM>
-@{ ViewData["Title"] = "ViewAllLocation"; }
+@{ ViewData["Title"] = "Store Locations"; }
 
 <h1>ViewAllLocation</h1>
 
@@ -32,17 +32,9 @@
     <td>
         @Html.DisplayFor(modelItem => model.Address)
     </td>
-    <td>
-        @Html.ActionLink("Manage", "ManageLocation", new { LocationId = model.LocationId })
-    </td>
 </tr>}
     </tbody>
 </table>
-<div class="row mt-4 btn-primary">
-    <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("AddLocation", "Admin")'">
-        Add a Location
-    </btn>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
