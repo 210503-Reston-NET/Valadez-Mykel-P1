@@ -1,0 +1,34 @@
+@model WebUI.Models.OrderVM;
+@{
+    ViewData["Title"] = "Dirt With Rocks";
+}
+
+<h1>Dirt with Rocks</h1>
+
+<h4>Amoutn Available: @ViewBag.itemCount</h4>
+
+<h3>How much you wan?</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md col-lg-6">
+            <form asp-action="MakeOrder">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Quantity" class="control-label"></label>
+                    <input asp-for="Quantity" class="form-control" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="CustomerId" value="@Model.CustomerId" />
+                <input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
+                @*<p>This will cost</p> @Model.Quantity*5.99*@
+                <div class="form-group">
+                    <input type="submit" value="Order" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+             @section Scripts {
+             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+             }

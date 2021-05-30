@@ -31,36 +31,6 @@ namespace DataLogic
             return _context.LocationProductInventories.Where(inv => inv.LocationId.Equals(locationId))
                .ToList();
 
-
-            //int counter = 1;
-
-            //_context.Locations.Join(_context.LocationProductInventories,
-            //    loc => loc.LocationId,
-            //    lpi => lpi.LocationId,
-            //    (loc, lpi) =>
-            //    new {
-            //        Name = loc.Name,
-            //        LocationId = loc.LocationId,
-            //        Address = loc.Address,
-            //        // Used to be able to pull the name out here with lpi.Product.Name
-            //        ProductId = lpi.ProductId,
-            //        Quantity = lpi.Quantity
-            //    }
-            //).Where(inv => inv.LocationId.Equals(locationId))
-            //.ToList()
-            //.ForEach(inv => {
-            //    if(counter == 1){
-            //        Console.WriteLine("Location Name: "+inv.Name);
-            //        Console.WriteLine("Location Id: "+inv.LocationId);
-            //        Console.WriteLine("Address: "+inv.Address);
-            //        Console.WriteLine("");
-            //    }
-            //    Console.WriteLine("Product : "+inv.ProductId);
-            //    Console.WriteLine("Quantity: "+inv.Quantity);
-            //    Console.WriteLine();
-
-            //    counter = 2;
-            //});
         }
 
         public List<Order> TransactionByLocation(int locationId){
@@ -168,34 +138,6 @@ namespace DataLogic
             });
 
             return tups;
-
-            // _context.Orders.Where(ord => ord.CustomerId.Equals(customerId))
-            // .ToList()
-            // .ForEach(ord => {
-
-            //     _context.Orders.Join(_context.OrderDetails,
-            //     ord => ord.OrderId,
-            //     dets => dets.OrderId,
-            //     (ord, dets) => 
-            //     new {
-            //         OrderId = ord.OrderId,
-            //         CustomerId = ord.CustomerId,
-            //         LocationId = ord.LocationId,
-            //         ProductId = dets.ProductId,
-            //         Quantity = dets.Quantity,
-            //         Delivered = dets.Delivered
-            //         }
-            //     ).ToList()
-            //     .ForEach(row => {
-            //         Console.WriteLine("Order Id: "+row.OrderId);
-            //         Console.WriteLine("Customer Id: "+row.CustomerId);
-
-            //         Console.WriteLine("Location Id: "+row.LocationId);
-            //         Console.WriteLine("ProductId: "+row.ProductId);
-            //         Console.WriteLine("Quantity Ordered: "+row.Quantity);
-            //         Console.WriteLine("Delivered Yet?: "+row.Delivered);
-            //         Console.WriteLine("");
-            //     });
 
         }
 

@@ -25,8 +25,25 @@ namespace WebUI.Controllers
 
         public ActionResult Dirt(OrderVM ord)
         {
-            
             ViewBag.itemCount = _BL.CheckItemAmount(1);
+            return View(ord);
+        }
+
+        public ActionResult Rocks(OrderVM ord)
+        {
+            ViewBag.itemCount = _BL.CheckItemAmount(2);
+            return View(ord);
+        }
+
+        public ActionResult DirtWRocks(OrderVM ord)
+        {
+            ViewBag.itemCount = _BL.CheckItemAmount(3);
+            return View(ord);
+        }
+
+        public ActionResult RocksWDirt(OrderVM ord)
+        {
+            ViewBag.itemCount = _BL.CheckItemAmount(4);
             return View(ord);
         }
 

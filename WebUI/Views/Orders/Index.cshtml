@@ -11,10 +11,10 @@
         <span id="selected">Chose option</span><span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
+        <li><a href='@Url.Action("Rocks", "Orders", new { CustomerId = Model.CustomerId, ProductId = 2})' onclick="setLable('Rocks', 2)">Rocks</a></li>
         <li><a href='@Url.Action("Dirt", "Orders", new { CustomerId = Model.CustomerId, ProductId = 1})' onclick="setLable('Dirt', 1)">Dirt</a></li>
-        <li><a href='@Url.Action("Rocks", "Orders")' onclick="setLable('Rocks', 2)">Rocks</a></li>
-        <li><a href='@Url.Action("DirtWRocks", "Orders")' onclick="setLable('Dirt with some rocks in it', 3)">Dirt with some rocks in it</a></li>
-        <li><a href='@Url.Action("RocksWDirt", "Orders")' onclick="setLable('Rocks with some dirt in it', 4)">Rocks with some dirt in it</a></li>
+        <li><a href='@Url.Action("DirtWRocks", "Orders", new { CustomerId = Model.CustomerId, ProductId = 3})' onclick="setLable('Dirt with some rocks in it', 3)">Dirt with some rocks in it</a></li>
+        <li><a href='@Url.Action("RocksWDirt", "Orders", new { CustomerId = Model.CustomerId, ProductId = 4})' onclick="setLable('Rocks with some dirt in it', 4)">Rocks with some dirt in it</a></li>
     </ul>
 </div>
 <script>

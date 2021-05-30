@@ -13,10 +13,7 @@ namespace WebUI.Controllers
     public class HomeController : Controller
     {
         private BLogic _BL;
-        // public HomeController(BLogic BL)
-        // {
-        //     _BL = BL;
-        // }
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, BLogic BL)
