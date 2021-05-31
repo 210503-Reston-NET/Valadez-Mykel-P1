@@ -259,6 +259,71 @@ namespace StoreTest
                 Assert.Equal(2, userId);
             }
         }
+        [Fact]
+        public void CustomerShouldTakeValidData()
+        {
+            // Arrange
+            string name = "Steph";
+            Customer test = new Customer();
+
+            // Act
+            test.Name = name;
+
+            // Assert
+            Assert.Equal(name, test.Name);
+        }
+        [Fact]
+        public void LocationShouldTakeValidData()
+        {
+            // Arrange
+            string name = "Detroit";
+            Location test = new Location();
+
+            // Act
+            test.Name = name;
+
+            // Assert
+            Assert.Equal(name, test.Name);
+        }
+        [Fact]
+        public void LocationProductInventoryShouldTakeValidData()
+        {
+            // Arrange
+            int quantity = 44;
+            LocationProductInventory test = new LocationProductInventory();
+
+            // Act
+            test.Quantity = quantity;
+
+            // Assert
+            Assert.Equal(quantity, test.Quantity);
+        }
+        [Fact]
+        public void OrderShouldTakeValidData()
+        {
+            // Arrange
+            int locationId = 1;
+            Order test = new Order();
+
+            // Act
+            test.LocationId = locationId;
+
+            // Assert
+            Assert.Equal(locationId, test.LocationId);
+        }
+        [Fact]
+        public void ProductShouldTakeValidData()
+        {
+            // Arrange
+            string name = "Rocks";
+            Product test = new Product();
+
+            // Act
+            test.Name = name;
+
+            // Assert
+            Assert.Equal(name, test.Name);
+        }
         //When testing operations that change the state of the db (i.e manipulate the data inside the db) 
         //make sure to check if the change has persisted even when accessing the db using a different context/connection
         //This means that you create another instance of your context when testing to check that the method has 
