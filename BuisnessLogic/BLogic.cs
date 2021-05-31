@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Models;
 using DataLogic;
 using System.Linq;
+using Serilog;
 
 namespace BuisnessLogic
 {
@@ -16,6 +17,9 @@ namespace BuisnessLogic
         }
 
         public int CheckUserCredentials(string email, string password){
+            Log.Information("retriving user");
+            Log.Debug("DebugLog");
+            
             return _DB.GetUserID(email, password);
         }
 

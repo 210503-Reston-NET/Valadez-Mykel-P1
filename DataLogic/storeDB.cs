@@ -41,20 +41,6 @@ namespace DataLogic
 
         public Tuple<Order, OrderDetail> ViewOrder(int orderId){
 
-            //return _context.Orders.Join(_context.OrderDetails,
-            //    ord => ord.OrderId,
-            //    dets => dets.OrderId,
-            //    (ord, dets) => 
-            //    new {
-            //        OrderId = ord.OrderId,
-            //        CustomerId = ord.CustomerId,
-            //        LocationId = ord.LocationId,
-            //        ProductId = dets.ProductId,
-            //        Quantity = dets.Quantity,
-            //        Delivered = dets.Delivered
-            //        }
-            //    ).Where(ord => ord.OrderId.Equals(orderId));
-
             Order ord = _context.Orders.FirstOrDefault(ord => ord.OrderId.Equals(orderId));
             OrderDetail det = _context.OrderDetails.FirstOrDefault(ord => ord.OrderId.Equals(orderId));
 
