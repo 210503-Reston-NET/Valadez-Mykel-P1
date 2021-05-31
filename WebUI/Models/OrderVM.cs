@@ -1,14 +1,19 @@
 ﻿using System;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using Models;
 namespace WebUI.Models
 {
     public class OrderVM
     {
+        [RegularExpression(@"^[0-9]+$",
+        ErrorMessage = "Invalid order ID")]
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
         public int LocationId { get; set; }
         public int ProductId { get; set; }
+        [Required]
+        [RegularExpression(@"^[1-9][0-9]+$",
+        ErrorMessage = "Invalid Quantity")]
         public int Quantity { get; set; }
         public bool? Delivered { get; set; }
 

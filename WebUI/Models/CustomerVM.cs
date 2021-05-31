@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
 using Models;
 
 namespace WebUI.Models
@@ -6,8 +6,16 @@ namespace WebUI.Models
     public class CustomerVM
     {
         public int CustomerId { get; set; }
+        [Required]
+        [RegularExpression(@"^[A-Z][a-zA-Z]*$",
+        ErrorMessage = "Please input a valid name")]
         public string Name { get; set; }
+        [Required]
+        [EmailAddress( 
+        ErrorMessage = "Please input a valid email")]
         public string Email { get; set; }
+        [Required]
+        [MaxLength(40)]
         public string Password { get; set; }
 
         public CustomerVM()

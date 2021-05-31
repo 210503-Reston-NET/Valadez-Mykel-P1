@@ -58,9 +58,9 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult FindOrderResults(int orderId)
+        public ActionResult FindOrderResults(OrderVM Id)
         {
-            OrderVM order = new OrderVM( _BL.CheckOrder(orderId));
+            OrderVM order = new OrderVM( _BL.CheckOrder(Id.OrderId));
             return View(order);
         }
 
