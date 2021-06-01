@@ -25,9 +25,6 @@ namespace BuisnessLogic
 
         public void FindUser(string name){
             Customer cust = _DB.FindCustomer(name);
-            Console.WriteLine("Id: "+ cust.CustomerId);
-            Console.WriteLine("Name: "+cust.Name);
-            Console.WriteLine("Email: "+cust.Email);
         }
         public Customer FindUser(int customerId){
             return _DB.FindCustomer(customerId);

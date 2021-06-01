@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebUI.Models;
 using BuisnessLogic;
-// using Serilog;
+using Serilog;
 
 
 namespace WebUI.Controllers
@@ -30,8 +30,18 @@ namespace WebUI.Controllers
         }
 
         public ActionResult GetLocations(){
+
+            _logger.LogInformation("Getting All Locations");
+            Log.Information("This way works too");
+
             List<LocationVM> stores = new List<LocationVM>();
-            _BL.GetAllStores().ForEach(i => stores.Add(new LocationVM(i)));
+            try{
+                _BL.GetAllStores().ForEach(i => stores.Add(new LocationVM(i)));
+                
+            }
+            catch(Exception e){
+                _logger.LogError(e, "Unable to get Location information");
+            }
             return View(stores);
         }
 
