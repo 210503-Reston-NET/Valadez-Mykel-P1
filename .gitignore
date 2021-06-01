@@ -1,6 +1,7 @@
 appsettings.json
 .DS_Store
 Makefile
+D:\\home\\LogFiles\\http\\RawLogs\\*
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,dotnetcore,csharp,aspnetcore,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,dotnetcore,csharp,aspnetcore,windows
 
