@@ -107,8 +107,25 @@ li {
   text-decoration: none;
 }
 
+#title{
+  margin-top: 2rem;
+  font-size: 4rem;
+  transition: 0.4s;
+  position: relative;
+  top: 0px;
+  z-index: -6;
+}
+#coverage{
+  width: 100%;
+  height: 12rem;
+  position: absolute;
+  /* top: 11rem; */
+  background-image: linear-gradient(rgb(3, 3, 46, .2), rgb(14, 5, 39, 1));
+  z-index: -2;
+}
 .paralax-div{
   height: 20rem;
+  width: 100%;
 }
 
 .foregroundMtn{
@@ -122,12 +139,12 @@ li {
 
 #leftMtn{
   position: relative;
-  right: 5rem;
+  right: 5vw;
 }
 
 #rightMtn{
   position: relative;
-  left: 5rem;
+  left: 5vw;
 }
 
 #log{

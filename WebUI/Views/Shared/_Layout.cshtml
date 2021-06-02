@@ -9,6 +9,10 @@
 </head>
 <body>
     <header class="mb-5">
+        <div id="title" class="row justify-content-center">
+            <p>Dirt Empire</p>
+        </div>
+        <div id="coverage"></div>
         <div class="paralax-div">
             <img alt="mtn" src="~/images/mountian1.svg" class="foregroundMtn" id="rightMtn">   
             <img alt="mtn" src="~/images/mountian1.svg" class="foregroundMtn" id="middleMtn">   
@@ -20,7 +24,13 @@
             @RenderBody()
         </main>
     </div>
-
+    <script>
+        document.addEventListener('scroll', function(){
+            if(document.documentElement.scrollTop < 70){
+                document.getElementById("title").style.top = (document.documentElement.scrollTop*2)+"px"
+            }
+        })
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
