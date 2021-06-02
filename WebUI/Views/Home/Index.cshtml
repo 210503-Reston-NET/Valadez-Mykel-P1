@@ -15,7 +15,7 @@
         </div>
         <div class="col-4">
             <button class="btn-primary mt-4" style="width: 100%;" >
-                @Html.ActionLink("Buy Online Now", "Index", "Orders", new { CustomerId = Model.CustomerId })
+                @Html.ActionLink("Buy Online Now", "Index", "Orders", new CustomerVM{ CustomerId = Model.CustomerId })
             </button>
             <button class="btn-primary mt-4" style="width: 100%;" >
                 @Html.ActionLink("Find a Location", "GetLocations", "Home")

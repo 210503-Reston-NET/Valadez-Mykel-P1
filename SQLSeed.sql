@@ -58,7 +58,7 @@ INSERT into "public"."Products" ("Name", "Price") VALUES ('Dirt', 5.99), ('Rocks
 
 INSERT into Customers VALUES ('JoeyBob', 'dirtEmpire@gmail.com', 'fishTaco')
 
-DELETE from "public"."Orders"
+Select * from "public"."Orders"
 
 INSERT into "public"."Orders" ("LocationId", "CustomerId") VALUES (1, 1)
 
