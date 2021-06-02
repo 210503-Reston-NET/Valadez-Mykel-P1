@@ -80,7 +80,9 @@ body{
 li {
   /* color: yellow; */
 }
-
+#body-holder{
+  margin-top: 6rem;
+}
 .btn-primary {
   color: white !important;
   text-decoration: none;
