@@ -1,0 +1,23 @@
+@model WebUI.Models.OrderVM;
+@{
+    ViewData["Title"] = "Order Failed";
+}
+
+<h1>Order Has Failed</h1>
+<h2 class="mt-2">Unable to purchase more than the available amount</h2>
+
+<h4 class="mt-4">Amount Available: @Model.Available</h4>
+
+<h4 class="mt-4">Amount Requested: @Model.Quantity</h4>
+
+<button class="btn-primary mt-4">
+    @Html.ActionLink("Back", "Index", "Home", new {Model.CustomerId})
+</button>
+
+@* <button onclick="location.href='@Url.Action("Index", "Home")'" class="btn-primary" style="float: right;">
+Back
+</button> *@
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

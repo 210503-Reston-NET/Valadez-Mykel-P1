@@ -22,8 +22,13 @@
             View all Locations
         </btn>
     </div>
-    <div class="row mt-5">
-        <a href="https://dirtempire.scm.azurewebsites.net/api/vfs/LogFiles/http/RawLogs/" >
+    <div class="row mt-4">
+        <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("Index", "Login")'">
+            Log Out
+        </btn>
+    </div>
+    <div class="row mt-5" style="float: right; position:relative; bottom: 4rem;">
+        <a href="https://dirtempire.scm.azurewebsites.net/api/vfs/LogFiles/http/RawLogs/" target="blank">
             <img src="~/images/log.svg" id="log">
         </a>
     </div>

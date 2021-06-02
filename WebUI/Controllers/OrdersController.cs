@@ -19,39 +19,45 @@ namespace WebUI.Controllers
         // GET: Orders
         public ActionResult Index(CustomerVM id)
         {
-            Console.WriteLine("Custommer buying : "+id.CustomerId);
-            return View(new OrderVM(id.CustomerId));
+            return View(new OrderVM(id));
         }
 
         public ActionResult Dirt(OrderVM ord)
         {
-            ViewBag.itemCount = _BL.CheckItemAmount(1);
+            ord.Available = _BL.CheckItemAmount(1);
             return View(ord);
         }
 
         public ActionResult Rocks(OrderVM ord)
         {
-            ViewBag.itemCount = _BL.CheckItemAmount(2);
+            ord.Available = _BL.CheckItemAmount(2);
             return View(ord);
         }
 
         public ActionResult DirtWRocks(OrderVM ord)
         {
-            ViewBag.itemCount = _BL.CheckItemAmount(3);
+            ord.Available = _BL.CheckItemAmount(3);
             return View(ord);
         }
 
         public ActionResult RocksWDirt(OrderVM ord)
         {
-            ViewBag.itemCount = _BL.CheckItemAmount(4);
+            ord.Available = _BL.CheckItemAmount(4);
             return View(ord);
         }
 
         [HttpPost]
         public ActionResult MakeOrder(OrderVM ord)
         {
-            _BL.MakePurchase(ord.ProductId, ord.Quantity, ord.CustomerId);
-            return View("../Home/Index", new CustomerVM(ord.CustomerId));
+            // Console.WriteLine(ord.Available);
+            // return View("FailedOrder", ord);
+            if(ord.Available < ord.Quantity){
+                return View("FailedOrder", ord);
+            }else{
+                _BL.MakePurchase(ord.ProductId, ord.Quantity, ord.CustomerId);
+                return View("../Home/Index", new CustomerVM(ord.CustomerId));
+
+            }
         }
 
         public ActionResult GetOrders(CustomerVM id)

@@ -4,27 +4,17 @@
     ViewData["Title"] = "Order Online";
 }
 
-
-
 <div class="dropdown">
     <button class="btn btn-primary" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
         <span id="selected">Chose option</span><span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-        <li><a href='@Url.Action("Rocks", "Orders", new { CustomerId = Model.CustomerId, ProductId = 2})' onclick="setLable('Rocks', 2)">Rocks</a></li>
-        <li><a href='@Url.Action("Dirt", "Orders", new { CustomerId = Model.CustomerId, ProductId = 1})' onclick="setLable('Dirt', 1)">Dirt</a></li>
-        <li><a href='@Url.Action("DirtWRocks", "Orders", new { CustomerId = Model.CustomerId, ProductId = 3})' onclick="setLable('Dirt with some rocks in it', 3)">Dirt with some rocks in it</a></li>
-        <li><a href='@Url.Action("RocksWDirt", "Orders", new { CustomerId = Model.CustomerId, ProductId = 4})' onclick="setLable('Rocks with some dirt in it', 4)">Rocks with some dirt in it</a></li>
+        <li>@Html.ActionLink("Dirt", "Dirt", "Orders", new OrderVM{ CustomerId = Model.CustomerId, ProductId = 1})</li>
+        <li>@Html.ActionLink("Rocks", "Rocks", "Orders", new OrderVM{ CustomerId = Model.CustomerId, ProductId = 2})</li>
+        <li>@Html.ActionLink("Dirt with Rocks", "DirtWRocks", "Orders", new OrderVM{ CustomerId = Model.CustomerId, ProductId = 3})</li>
+        <li>@Html.ActionLink("RocksWDirt", "Orders", new OrderVM{ CustomerId = Model.CustomerId, ProductId = 4})</li>
     </ul>
 </div>
-<script>
-    let productId = 0
-    function setLable(label, p) {
-        document.getElementById("selected").innerHTML = label
-        productId = p
-    }
-</script>
-
 
 
 @section Scripts {

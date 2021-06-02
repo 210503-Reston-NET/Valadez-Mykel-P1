@@ -4,12 +4,31 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Welcome to JoeyBob's Dirt Super Supply</h1>
-
-<h4>What chew wan?</h4>
 
 <div class="container">
-    <div class="row mt-4">
+    <div class="row justify-content-between">
+        <div class="col-6">
+            <h1>Welcome to JoeyBob's Dirt Super Supply</h1>
+
+            <h4 class="mt-4" style="font-style: italic">"What chew wan?" -JoeyBob</h4>
+            
+        </div>
+        <div class="col-4">
+            <button class="btn-primary mt-4" style="width: 100%;" >
+                @Html.ActionLink("Buy Online Now", "Index", "Orders", new { CustomerId = Model.CustomerId })
+            </button>
+            <button class="btn-primary mt-4" style="width: 100%;" >
+                @Html.ActionLink("Find a Location", "GetLocations", "Home")
+            </button>
+            <button class="btn-primary mt-4" style="width: 100%;">
+                @Html.ActionLink("Check on Your Orders", "GetOrders", "Orders", new CustomerVM{ CustomerId = Model.CustomerId })
+            </button>
+            <button class="btn-primary mt-4" style="width: 100%;">
+                @Html.ActionLink("Log Out", "Index", "Login")
+            </button>
+        </div>
+    </div>
+    @* <div class="row mt-4">
         <button class="col-4 btn-primary" >
             @Html.ActionLink("Buy Online Now", "Index", "Orders", new { CustomerId = Model.CustomerId })
         </button>
@@ -23,5 +42,5 @@
         <button class="col-4 btn-primary">
             @Html.ActionLink("Check on Your Orders", "GetOrders", "Orders", new { CustomerId = Model.CustomerId })
         </button>
-    </div>
+    </div> *@
 </div>

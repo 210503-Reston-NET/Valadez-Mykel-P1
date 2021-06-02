@@ -12,10 +12,12 @@ namespace WebUI.Models
         public int LocationId { get; set; }
         public int ProductId { get; set; }
         [Required]
-        [RegularExpression(@"^[1-9][0-9]+$",
+        [RegularExpression(@"^[0-9]+$",
         ErrorMessage = "Invalid Quantity")]
         public int Quantity { get; set; }
         public bool? Delivered { get; set; }
+
+        public int Available { get; set; }
 
         public OrderVM(Tuple<Order, OrderDetail> ord)
         {
@@ -35,6 +37,11 @@ namespace WebUI.Models
         public OrderVM(CustomerVM custid)
         {
             this.CustomerId = custid.CustomerId;
+        }
+
+        public OrderVM(int custid, int prodId){
+            this.CustomerId = custid;
+            this.ProductId = prodId;
         }
 
         public OrderVM()

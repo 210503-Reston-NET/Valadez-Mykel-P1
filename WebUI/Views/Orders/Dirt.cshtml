@@ -5,7 +5,7 @@
 
 <h1>Dirt</h1>
 
-<h4>Amoutn Available: @ViewBag.itemCount</h4>
+<h4>Amoutn Available: @Model.Available</h4>
 
 <h3>How much you wan?</h3>
 
@@ -21,7 +21,7 @@
                 </div>
                 <input type="hidden" asp-for="CustomerId" value="@Model.CustomerId" />
                 <input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
-                @*<p>This will cost</p> @Model.Quantity*5.99*@
+                <input type="hidden" asp-for="Available" value="@Model.Available" />
                 <div class="form-group">
                     <input type="submit" value="Order" class="btn btn-primary" />
                 </div>

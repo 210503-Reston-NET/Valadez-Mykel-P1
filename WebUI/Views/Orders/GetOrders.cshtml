@@ -56,6 +56,9 @@
     </tbody>
 </table>
 }
+<button class="btn-primary mt-4">
+    @Html.ActionLink("Back", "Index", "Home", new CustomerVM{CustomerId = Model[0].CustomerId})
+</button>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
