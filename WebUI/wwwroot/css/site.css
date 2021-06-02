@@ -116,12 +116,13 @@ li {
   z-index: -6;
 }
 #coverage{
-  width: 100%;
+  width: 50%;
   height: 12rem;
   position: absolute;
   /* top: 11rem; */
   background-image: linear-gradient(rgb(3, 3, 46, .2), rgb(14, 5, 39, 1));
   z-index: -2;
+  left: 25vw;
 }
 .paralax-div{
   height: 20rem;
