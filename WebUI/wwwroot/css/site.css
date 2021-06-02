@@ -9,11 +9,11 @@
 
 /* Provide sufficient contrast against white background */
 
-.btn-primary {
+/* .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
+} */
 
 /* 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -67,24 +67,73 @@ body {
 body{
   color: white;
   background-color: rgb(3, 3, 46);
+  background-image: linear-gradient(rgb(3, 3, 46), rgb(14, 5, 39),black, black,black);
+  
 }
 
 .table{
   color: white;
   background-color: rgb(63, 51, 68);
-}
-
-a{
-  color: yellowgreen;
+  border-radius: 5px;
 }
 
 li {
-  color: yellow;
+  /* color: yellow; */
 }
 
-.btn-primary a {
+.btn-primary {
   color: white !important;
   text-decoration: none;
-  font-size: xx-large;
+  font-size: x-large;
+  background-color: transparent;
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: white;
+}
+
+.btn-primary:hover{
+  background-color: rgb(103, 44, 114);
+  border-color: white;
+}
+
+.btn-primary:active{
+  background-color: rgb(173, 9, 173) !important;
+  border-color: transparent !important;
+}
+
+.btn-primary a{
+  color: white;
+  text-decoration: none;
+}
+
+.paralax-div{
+  height: 20rem;
+}
+
+.foregroundMtn{
+  width: 32%;
+}
+
+#middleMtn{
+  position: relative;
+  top: 5rem;
+}
+
+#leftMtn{
+  position: relative;
+  right: 5rem;
+}
+
+#rightMtn{
+  position: relative;
+  left: 5rem;
+}
+
+#log{
+  height: 100px;
+  width: 200px;
+  /* align-items: flex-end; */
+  float: right;
 }
 

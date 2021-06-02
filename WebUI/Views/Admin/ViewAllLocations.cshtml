@@ -1,7 +1,7 @@
 @model List<WebUI.Models.LocationVM>
 @{ ViewData["Title"] = "ViewAllLocation"; }
 
-<h1>ViewAllLocation</h1>
+<h1>Locations</h1>
 
 <table class="table">
 
@@ -33,15 +33,20 @@
         @Html.DisplayFor(modelItem => model.Address)
     </td>
     <td>
-        @Html.ActionLink("Manage", "ManageLocation", new { LocationId = model.LocationId })
+        <button class="btn-primary">
+            @Html.ActionLink("Manage", "ManageLocation", new { LocationId = model.LocationId })
+        </button>
     </td>
 </tr>}
     </tbody>
 </table>
-<div class="row mt-4 btn-primary">
+<div class="row mt-4 justify-content-between">
     <btn class="col-4 btn-primary" onclick="location.href='@Url.Action("AddLocation", "Admin")'">
         Add a Location
     </btn>
+    <button onclick="location.href='@Url.Action("Index", "Admin")'" class="btn-primary" style="float: right;">
+    Back
+    </button>
 </div>
 
 @section Scripts {

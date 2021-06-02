@@ -1,7 +1,7 @@
 @model WebUI.Models.FullLocation;
 @{ ViewData["Title"] = "ManageLocation"; }
 
-<h1>ManageLocation</h1>
+<h1>Manage Location @Model.LocationId</h1>
 
 <table class="table mb-5">
     <thead>
@@ -56,11 +56,20 @@
         }
     </tbody>
 </table>
-<div class="col-md col-lg-6">
-    @Html.ActionLink("Add Inventory", "AddInventory", new { LocationId = Model.LocationId })
-</div>
-<div class="col-md col-lg-6">
-    @Html.ActionLink("View Store Orders", "LocationOrders", new { LocationId = Model.LocationId })
+<div class="row mt-4 justify-content-between">
+    <div class="col-4">
+        <button class="btn-primary mb-3" style="width: 100%;">
+            @Html.ActionLink("Add Inventory", "AddInventory", new { LocationId = Model.LocationId })
+        </button>
+        <button class="btn-primary" style="width: 100%;">
+            @Html.ActionLink("View Store Orders", "LocationOrders", new { LocationId = Model.LocationId })
+        </button>
+    </div>
+    <div class="col-4">
+        <button onclick="location.href='@Url.Action("ViewAllLocations", "Admin")'" class="btn-primary" style="float: right;">
+        Back
+        </button>
+    </div>
 </div>
 
 @section Scripts {

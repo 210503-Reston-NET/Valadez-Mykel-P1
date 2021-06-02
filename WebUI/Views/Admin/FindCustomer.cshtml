@@ -1,10 +1,10 @@
 
 @model WebUI.Models.CustomerVM;
 @{
-    ViewData["Title"] = "FindCustomer";
+    ViewData["Title"] = "Find a Customer";
 }
 
-<h1>FindCustomer</h1>
+<h1>Find a Customer</h1>
 
 <div class="container">
     <div class="row">
@@ -12,7 +12,7 @@
             <form asp-action="FindCustomerResults">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="CustomerId" class="control-label"></label>
+                    <label asp-for="CustomerId" class="control-label">Enter Customer ID</label>
                     <input asp-for="CustomerId" class="form-control" />
                     <span asp-validation-for="CustomerId" class="text-danger"></span>
                 </div>

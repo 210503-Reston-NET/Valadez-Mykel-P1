@@ -5,6 +5,12 @@
 
 
 <h1>Customer Search Results</h1>
+
+@if(Model == null){
+    <h1 style="text-align: center; margin-top: 50px">No Customer Found</h1>
+}
+
+@if(Model != null ){
 <table class="table">
 
     <thead>
@@ -28,7 +34,11 @@
     <td>
 </tr>
     </tbody>
-</table>
+</table>}
+
+<button onclick="location.href='@Url.Action("Index", "Admin")'" class="btn-primary">
+    Back
+</button>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

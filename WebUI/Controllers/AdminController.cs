@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebUI.Models;
 using BuisnessLogic;
 using Models;
+using Serilog;
 
 namespace WebUI.Controllers
 {
@@ -60,8 +61,13 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult FindOrderResults(OrderVM Id)
         {
-            OrderVM order = new OrderVM( _BL.CheckOrder(Id.OrderId));
-            return View(order);
+            try{
+                OrderVM order = new OrderVM( _BL.CheckOrder(Id.OrderId));
+                return View(order);
+            }catch(Exception e){
+                Log.Error(e, "No Order Was Found");
+                return View(new OrderVM());
+            }
         }
 
         //public ActionResult SearchForLocation()
